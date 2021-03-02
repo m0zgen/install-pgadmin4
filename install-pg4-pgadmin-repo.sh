@@ -19,4 +19,18 @@ yum -y install pgadmin4-web
 
 sed -i 's/^Listen.*/Listen '"$HTTPD_PORT"'/' /etc/httpd/conf/httpd.conf
 
+# Enable and run HTTPD
+systemctl enable --now httpd
+
+# Allow port
+firewall-cmd --permanent --add-port=$HTTPD_PORT/tcp
+firewall-cmd --reload
+
+# Setup pgAdmin
 /usr/pgadmin4/bin/setup-web.sh
+
+# User notice
+echo "http://$SERVER_IP:$HTTPD_PORT/pgadmin4"
+echo "You can test you installation with command:"
+echo -e "curl \"http://$SERVER_IP:$HTTPD_PORT/pgadmin4/login?next=%2Fpgadmin4%2F\""
+
