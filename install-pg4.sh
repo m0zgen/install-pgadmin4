@@ -9,6 +9,7 @@ PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
 SCRIPT_PATH=$(cd `dirname "${BASH_SOURCE[0]}"` && pwd)
 
 HTTPD_PORT="81"
+SERVER_IP=$(hostname -I | cut -d' ' -f1)
 
 # Installation steps
 # -------------------------------------------------------------------------------------------\
@@ -17,7 +18,7 @@ yum -y install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_6
 yum -y install pgadmin4
 
 # HTTPD port binding
-sed -i 's/^Listen.*/Listen $HTTPD_PORT/' /etc/httpd/conf/httpd.conf
+sed -i 's/^Listen.*/Listen '"$HTTPD_PORT"'/' /etc/httpd/conf/httpd.conf
 mv /etc/httpd/conf.d/pgadmin4.conf.sample /etc/httpd/conf.d/pgadmin4.conf
 
 mkdir -p /var/lib/pgadmin4/ /var/log/pgadmin4/
@@ -48,8 +49,7 @@ systemctl enable --now httpd
 firewall-cmd --permanent --add-port=$HTTPD_PORT/tcp
 firewall-cmd --reload
 
-SERVER_IP=$(hostname -I | cut -d' ' -f1)
-
+# User notice
 echo "http://$SERVER_IP:$HTTPD_PORT/pgadmin4"
 echo "You can test you installation with command:"
 echo -e "curl \"http://$SERVER_IP:$HTTPD_PORT/pgadmin4/login?next=%2Fpgadmin4%2F\""
