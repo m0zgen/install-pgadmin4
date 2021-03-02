@@ -15,7 +15,7 @@ git clone https://github.com/m0zgen/install-pgadmin4.git
 * run script
   
 ```bash
-cd install-pgadmin4 && ./install-pg4-pgsql-repo.sh
+cd install-pgadmin4 && ./install-pg4.sh
 ```
 * Enjoy
 
@@ -27,3 +27,11 @@ cd install-pgadmin4 && ./install-pg4-pgsql-repo.sh
 ```
 http://<IP>:81/pgadmin4
 ```
+
+* repository contains several scripts:
+  * `./more/install-pg4-pgsql-repo.sh` - install pgAdmin from postgresql repository
+  * `./install-pg4.sh` - install pgAdmin from pgAdmin repository
+    
+## Additional links
+* https://www.pgadmin.org/download/pgadmin-4-rpm/
+
