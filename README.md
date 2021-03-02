@@ -7,7 +7,16 @@
 ## Usage
 
 * clone repository
+
+```bash
+git clone https://github.com/m0zgen/install-pgadmin4.git
+```  
+
 * run script
+  
+```bash
+cd install-pgadmin4 && ./install-pg4.sh
+```
 * Enjoy
 
 ## Details
