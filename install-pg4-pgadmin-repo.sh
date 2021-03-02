@@ -20,7 +20,7 @@ yum -y install pgadmin4-web
 sed -i 's/^Listen.*/Listen '"$HTTPD_PORT"'/' /etc/httpd/conf/httpd.conf
 
 # Enable and run HTTPD
-systemctl enable --now httpd
+systemctl enable httpd
 
 # Allow port
 firewall-cmd --permanent --add-port=$HTTPD_PORT/tcp
