@@ -30,7 +30,7 @@ firewall-cmd --reload
 /usr/pgadmin4/bin/setup-web.sh
 
 # User notice
-echo "http://$SERVER_IP:$HTTPD_PORT/pgadmin4"
+echo -e "\nhttp://$SERVER_IP:$HTTPD_PORT/pgadmin4"
 echo "You can test you installation with command:"
 echo -e "curl \"http://$SERVER_IP:$HTTPD_PORT/pgadmin4/login?next=%2Fpgadmin4%2F\""
 
