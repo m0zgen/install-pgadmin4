@@ -15,7 +15,7 @@ git clone https://github.com/m0zgen/install-pgadmin4.git
 * run script
   
 ```bash
-cd install-pgadmin4 && ./install-pg4.sh
+cd install-pgadmin4 && ./install-pg4-pgsql-repo.sh
 ```
 * Enjoy
 
